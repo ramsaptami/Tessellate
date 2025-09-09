@@ -2,8 +2,12 @@
 
 import { useState, useEffect } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { RefreshCw, BarChart3, Target, List, TrendingUp, Github, Users, Clock } from 'lucide-react';
 import AccessControl from '@/components/shared/AccessControl';
+import NotionDashboard from '@/components/notion/NotionDashboard';
+import NotionErrorBoundary from '@/components/notion/NotionErrorBoundary';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 interface TaskMetrics {
   total: number;
@@ -19,8 +23,19 @@ interface ProjectStats {
   codeQuality: number;
 }
 
+// Create a query client instance for React Query
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      retry: 2,
+      staleTime: 1 * 60 * 1000, // 1 minute
+    },
+  },
+});
+
 export default function DashboardPage() {
   const [isLoading, setIsLoading] = useState(true);
+  const [activeTab, setActiveTab] = useState('overview');
   const [taskMetrics, setTaskMetrics] = useState<TaskMetrics>({
     total: 24,
     completed: 18,
@@ -62,32 +77,40 @@ export default function DashboardPage() {
   }
 
   return (
-    <AccessControl>
-      <div className="min-h-screen bg-background">
-        {/* Header */}
-        <header className="border-b">
-          <div className="container mx-auto px-4 py-6">
-            <div className="flex justify-between items-center">
-              <div>
-                <h1 className="text-3xl font-bold">Project Dashboard</h1>
-                <p className="text-muted-foreground mt-1">
-                  Comprehensive project management and analytics overview
-                </p>
+    <QueryClientProvider client={queryClient}>
+      <AccessControl>
+        <div className="min-h-screen bg-background">
+          {/* Header */}
+          <header className="border-b">
+            <div className="container mx-auto px-4 py-6">
+              <div className="flex justify-between items-center">
+                <div>
+                  <h1 className="text-3xl font-bold">Project Dashboard</h1>
+                  <p className="text-muted-foreground mt-1">
+                    Comprehensive project management and analytics overview with Notion integration
+                  </p>
+                </div>
+                <button
+                  onClick={refreshData}
+                  className="flex items-center gap-2 px-4 py-2 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-colors"
+                  disabled={isLoading}
+                >
+                  <RefreshCw className={`h-4 w-4 ${isLoading ? 'animate-spin' : ''}`} />
+                  Refresh Data
+                </button>
               </div>
-              <button
-                onClick={refreshData}
-                className="flex items-center gap-2 px-4 py-2 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-colors"
-                disabled={isLoading}
-              >
-                <RefreshCw className={`h-4 w-4 ${isLoading ? 'animate-spin' : ''}`} />
-                Refresh Data
-              </button>
             </div>
-          </div>
-        </header>
+          </header>
 
-      {/* Main Content */}
-      <main className="container mx-auto px-4 py-8">
+          {/* Main Content */}
+          <main className="container mx-auto px-4 py-8">
+            <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-6">
+              <TabsList className="grid w-full grid-cols-2">
+                <TabsTrigger value="overview">Local Dashboard</TabsTrigger>
+                <TabsTrigger value="notion">Notion Integration</TabsTrigger>
+              </TabsList>
+
+              <TabsContent value="overview" className="space-y-8">
         {/* Overview Cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
           <Card>
@@ -253,8 +276,17 @@ export default function DashboardPage() {
             </div>
           </CardContent>
         </Card>
-      </main>
-    </div>
-    </AccessControl>
+              </TabsContent>
+
+              <TabsContent value="notion">
+                <NotionErrorBoundary>
+                  <NotionDashboard />
+                </NotionErrorBoundary>
+              </TabsContent>
+            </Tabs>
+          </main>
+        </div>
+      </AccessControl>
+    </QueryClientProvider>
   );
 }
