@@ -1,1 +1,28 @@
-import type { Metadata } from \"next\";\nimport { Inter } from \"next/font/google\";\nimport \"./globals.css\";\nimport Navigation from \"@/components/shared/Navigation\";\n\nconst inter = Inter({ subsets: [\"latin\"] });\n\nexport const metadata: Metadata = {\n  title: \"Tessellate - Creative Workflow Platform\",\n  description: \"Transform your creative vision into reality with our integrated moodboard and lookbook platform\",\n};\n\nexport default function RootLayout({\n  children,\n}: {\n  children: React.ReactNode;\n}) {\n  return (\n    <html lang=\"en\">\n      <body className={inter.className}>\n        <Navigation />\n        <main className=\"pt-16\">\n          {children}\n        </main>\n      </body>\n    </html>\n  );\n}
+import type { Metadata } from "next";
+import { Inter } from "next/font/google";
+import "./globals.css";
+import Navigation from "@/components/shared/Navigation";
+
+const inter = Inter({ subsets: ["latin"] });
+
+export const metadata: Metadata = {
+  title: "Tessellate - Creative Workflow Platform",
+  description: "Transform your creative vision into reality with our integrated moodboard and lookbook platform",
+};
+
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  return (
+    <html lang="en">
+      <body className={inter.className}>
+        <Navigation />
+        <main className="pt-16">
+          {children}
+        </main>
+      </body>
+    </html>
+  );
+}
