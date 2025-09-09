@@ -1,5 +1,6 @@
 'use client'
 
+import DashboardLayout from '@/components/layout/DashboardLayout'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
 import { Sparkles, Search, Palette, Share2 } from 'lucide-react'
@@ -24,7 +25,8 @@ export default function LookbookPage() {
   }
 
   return (
-    <div className="min-h-screen">
+    <DashboardLayout>
+      <div className="min-h-screen bg-gray-50">
       {/* Hero Section */}
       <section className="relative overflow-hidden bg-gradient-to-br from-rose-50 via-white to-indigo-50">
         <div className="mx-auto max-w-7xl px-6 pb-24 pt-16 sm:pb-32 sm:pt-24 lg:px-8 lg:pt-32">
@@ -283,6 +285,7 @@ export default function LookbookPage() {
           </div>
         </div>
       </section>
-    </div>
+      </div>
+    </DashboardLayout>
   )
 }

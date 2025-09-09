@@ -1,5 +1,6 @@
 'use client'
 
+import DashboardLayout from '@/components/layout/DashboardLayout'
 import Link from 'next/link'
 import { motion, useMotionValue, useTransform, useSpring, AnimatePresence } from 'framer-motion'
 import { Palette, Upload, Share2, Download, Grid, Users, Sparkles, Image, Plus, Heart, Star, Zap, MousePointer2 } from 'lucide-react'
@@ -239,9 +240,10 @@ export default function MoodboardPage() {
   }
 
   return (
-    <div className="min-h-screen">
+    <DashboardLayout>
+      <div className="min-h-screen bg-gray-50">
       {/* Animated Background */}
-      <div className="fixed inset-0 overflow-hidden pointer-events-none">
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <motion.div
           className="absolute -inset-10 opacity-30"
           animate={{
@@ -577,6 +579,7 @@ export default function MoodboardPage() {
           </FloatingElement>
         </div>
       </section>
-    </div>
+      </div>
+    </DashboardLayout>
   );
 }
