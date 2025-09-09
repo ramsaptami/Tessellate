@@ -17,7 +17,7 @@
     "format:check": "prettier --check ."
   },
   "dependencies": {
-    "@company/rubric-sdk": "file:../rubric-sdk",
+    "@company/rubric-sdk": "git+https://github.com/ramsaptami/rubric-sdk.git",
     "@hookform/resolvers": "^3.3.0",
     "@notionhq/client": "^4.0.2",
     "@octokit/rest": "^22.0.0",
