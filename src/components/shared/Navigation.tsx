@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 import { motion } from 'framer-motion'
 import { cn } from '@/lib/utils'
@@ -12,7 +13,8 @@ import {
   ChevronRight,
   Lock,
   Menu,
-  X
+  X,
+  Package
 } from 'lucide-react'
 import { useState } from 'react'
 
@@ -31,8 +33,14 @@ const Navigation = () => {
             transition={{ duration: 0.5 }}
           >
             <Link href="/" className="flex items-center space-x-3 group">
-              <div className="w-10 h-10 bg-gradient-to-br from-purple-600 via-pink-600 to-blue-600 rounded-xl flex items-center justify-center shadow-lg group-hover:shadow-xl transition-shadow">
-                <span className="text-white font-bold text-lg">T</span>
+              <div className="w-10 h-10 rounded-xl overflow-hidden shadow-lg group-hover:shadow-xl transition-shadow">
+                <Image
+                  src="https://ancuwmmivgdvommzigwv.supabase.co/storage/v1/object/sign/digital%20assets/cropped%20t.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9iNWFkYWFkOS01Y2YyLTRmNzQtYmU5Yi0wYTdjMjdhMDE2NzIiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJkaWdpdGFsIGFzc2V0cy9jcm9wcGVkIHQucG5nIiwiaWF0IjoxNzU3NDI3ODE3LCJleHAiOjE4MTc5MDc4MTd9.wwfGuA_YNafyw5ESP8s_fuPzW9NDkbijMZGpYaOHF3E"
+                  alt="Tessellate Logo"
+                  width={40}
+                  height={40}
+                  className="w-full h-full object-cover"
+                />
               </div>
               <span className="font-bold text-2xl bg-gradient-to-r from-gray-900 to-gray-600 bg-clip-text text-transparent">
                 Tessellate
@@ -55,6 +63,21 @@ const Navigation = () => {
             </Link>
 
             <div className="flex items-center space-x-4">
+              <Link 
+                href="/products" 
+                className={cn(
+                  "flex items-center space-x-2 px-4 py-2 rounded-full text-sm font-medium transition-all duration-300",
+                  pathname === '/products' 
+                    ? "text-white bg-gradient-to-r from-green-500 to-emerald-500 shadow-lg" 
+                    : "text-gray-700 hover:text-green-600 hover:bg-gray-50"
+                )}
+              >
+                <Package className="w-4 h-4" />
+                <span>Products</span>
+              </Link>
+
+              <div className="w-8 h-px bg-gradient-to-r from-transparent via-gray-300 to-transparent"></div>
+
               <Link 
                 href="/moodboard" 
                 className={cn(
@@ -135,6 +158,20 @@ const Navigation = () => {
               )}
             >
               Home
+            </Link>
+            
+            <Link 
+              href="/products" 
+              onClick={() => setIsOpen(false)}
+              className={cn(
+                "flex items-center space-x-2 px-4 py-3 rounded-xl text-sm font-medium transition-all",
+                pathname === '/products' 
+                  ? "text-green-600 bg-green-50" 
+                  : "text-gray-700 hover:bg-gray-50"
+              )}
+            >
+              <Package className="w-4 h-4" />
+              <span>Products</span>
             </Link>
             
             <Link 
