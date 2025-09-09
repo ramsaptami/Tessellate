@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { RefreshCw, BarChart3, Target, List, TrendingUp, Github, Users, Clock } from 'lucide-react';
+import AccessControl from '@/components/shared/AccessControl';
 
 interface TaskMetrics {
   total: number;
@@ -61,28 +62,29 @@ export default function DashboardPage() {
   }
 
   return (
-    <div className="min-h-screen bg-background">
-      {/* Header */}
-      <header className="border-b">
-        <div className="container mx-auto px-4 py-6">
-          <div className="flex justify-between items-center">
-            <div>
-              <h1 className="text-3xl font-bold">Project Dashboard</h1>
-              <p className="text-muted-foreground mt-1">
-                Comprehensive project management and analytics overview
-              </p>
+    <AccessControl>
+      <div className="min-h-screen bg-background">
+        {/* Header */}
+        <header className="border-b">
+          <div className="container mx-auto px-4 py-6">
+            <div className="flex justify-between items-center">
+              <div>
+                <h1 className="text-3xl font-bold">Project Dashboard</h1>
+                <p className="text-muted-foreground mt-1">
+                  Comprehensive project management and analytics overview
+                </p>
+              </div>
+              <button
+                onClick={refreshData}
+                className="flex items-center gap-2 px-4 py-2 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-colors"
+                disabled={isLoading}
+              >
+                <RefreshCw className={`h-4 w-4 ${isLoading ? 'animate-spin' : ''}`} />
+                Refresh Data
+              </button>
             </div>
-            <button
-              onClick={refreshData}
-              className="flex items-center gap-2 px-4 py-2 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-colors"
-              disabled={isLoading}
-            >
-              <RefreshCw className={`h-4 w-4 ${isLoading ? 'animate-spin' : ''}`} />
-              Refresh Data
-            </button>
           </div>
-        </div>
-      </header>
+        </header>
 
       {/* Main Content */}
       <main className="container mx-auto px-4 py-8">
@@ -253,5 +255,6 @@ export default function DashboardPage() {
         </Card>
       </main>
     </div>
+    </AccessControl>
   );
 }

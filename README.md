@@ -1,30 +1,41 @@
 # Tessellate - Consolidated Platform
 
-A unified platform that combines three powerful applications:
+A unified platform combining creative workflow tools and project management solutions.
 
-- **Lookbook Creator** (`/lookbook`) - AI-powered fashion lookbook creation
-- **Project Dashboard** (`/dashboard`) - Comprehensive project management and analytics  
-- **Moodboard Studio** (`/moodboard`) - Visual inspiration and design collaboration
+## Application Architecture
 
-## Features
+### 🎨 Creative Workflow (Integrated)
+A seamless two-step creative process where inspiration flows naturally into curated content:
 
-### 🎨 Lookbook Creator
-- AI-powered product search and matching
-- Magazine-style layout generation
-- Natural language style queries
+**Step 1: Moodboard Studio** (`/moodboard`)
+- Visual inspiration and design collaboration
+- Drag-and-drop visual editor  
+- Real-time team collaboration
+- Smart layout suggestions and AI assistance
+- Export and sharing capabilities
+
+**Step 2: Lookbook Creator** (`/lookbook`)  
+- AI-powered fashion lookbook creation
+- Natural language product search ("brown leather couch with teak tables")
+- Magazine-style "Key Prices" layouts with brand attribution
+- Seamless integration with moodboard inspiration
 - Professional editorial formats
 
-### 📊 Project Dashboard  
-- Real-time project metrics and analytics
-- Task management and prioritization
-- Team collaboration tools
-- Performance tracking
+### 📊 Project Management (Access-Controlled)
 
-### 🎭 Moodboard Studio
-- Drag-and-drop visual editor
-- Real-time collaboration
-- Smart layout suggestions  
-- Export and sharing capabilities
+**Project Dashboard** (`/dashboard`) - *Requires Authentication*
+- Comprehensive project analytics and metrics
+- Task management and team collaboration  
+- GitHub integration and code quality tracking
+- Performance monitoring and reporting
+- Role-based access control (Coming Soon)
+
+## Key Differentiators
+
+- **Integrated Creative Workflow**: Moodboard → Lookbook represents a natural creative progression
+- **Access-Controlled Dashboard**: Separate authentication layer for sensitive project data  
+- **Modern Polyvore Alternative**: Advanced AI-powered product matching and curation
+- **Professional Layouts**: Magazine-quality "Key Prices" style presentations
 
 ## Tech Stack
 

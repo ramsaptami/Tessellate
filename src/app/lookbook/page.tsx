@@ -53,6 +53,22 @@ export default function LookbookPage() {
               From "pastel shirts with light bottoms" to professional editorial layouts.
             </motion.p>
 
+            {/* Workflow Integration Notice */}
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.3 }}
+              className="mt-6 p-4 bg-gradient-to-r from-rose-50 to-indigo-50 rounded-lg border border-rose-200"
+            >
+              <p className="text-sm text-center text-gray-700">
+                <span className="font-medium">Tip:</span> Start with a{' '}
+                <Link href="/moodboard" className="text-purple-600 hover:text-purple-700 font-medium underline">
+                  moodboard
+                </Link>{' '}
+                to capture your inspiration, then use it to guide your lookbook creation
+              </p>
+            </motion.div>
+
             <motion.div 
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
