@@ -66,6 +66,12 @@ export interface Task {
   estimatedHours?: number;
   actualHours?: number;
   tags: string[];
+  urgencyScore?: number;
+  impactScore?: number;
+  effortScore?: number;
+  dependenciesScore?: number;
+  totalRubricScore?: number;
+  priorityReason?: string;
   url?: string;
   createdAt: string;
   updatedAt: string;

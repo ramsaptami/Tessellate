@@ -228,6 +228,34 @@ class NotionService {
           'Tags': {
             multi_select: {},
           },
+          'Urgency Score': {
+            number: {
+              format: 'number_with_commas',
+            },
+          },
+          'Impact Score': {
+            number: {
+              format: 'number_with_commas',
+            },
+          },
+          'Effort Score': {
+            number: {
+              format: 'number_with_commas',
+            },
+          },
+          'Dependencies Score': {
+            number: {
+              format: 'number_with_commas',
+            },
+          },
+          'Total Rubric Score': {
+            number: {
+              format: 'number_with_commas',
+            },
+          },
+          'Priority Reason': {
+            rich_text: {},
+          },
         },
         icon: {
           type: 'emoji',
@@ -324,6 +352,12 @@ class NotionService {
           estimatedHours: properties['Estimated Hours']?.number,
           actualHours: properties['Actual Hours']?.number,
           tags: properties.Tags?.multi_select?.map((item: any) => item.name) || [],
+          urgencyScore: properties['Urgency Score']?.number,
+          impactScore: properties['Impact Score']?.number,
+          effortScore: properties['Effort Score']?.number,
+          dependenciesScore: properties['Dependencies Score']?.number,
+          totalRubricScore: properties['Total Rubric Score']?.number,
+          priorityReason: properties['Priority Reason']?.rich_text?.[0]?.text?.content,
           url: page.url,
           createdAt: page.created_time,
           updatedAt: page.last_edited_time,
@@ -491,6 +525,40 @@ class NotionService {
           ...(task.tags && {
             'Tags': {
               multi_select: task.tags.map(tag => ({ name: tag })),
+            },
+          }),
+          ...(task.urgencyScore !== undefined && {
+            'Urgency Score': {
+              number: task.urgencyScore,
+            },
+          }),
+          ...(task.impactScore !== undefined && {
+            'Impact Score': {
+              number: task.impactScore,
+            },
+          }),
+          ...(task.effortScore !== undefined && {
+            'Effort Score': {
+              number: task.effortScore,
+            },
+          }),
+          ...(task.dependenciesScore !== undefined && {
+            'Dependencies Score': {
+              number: task.dependenciesScore,
+            },
+          }),
+          ...(task.totalRubricScore !== undefined && {
+            'Total Rubric Score': {
+              number: task.totalRubricScore,
+            },
+          }),
+          ...(task.priorityReason && {
+            'Priority Reason': {
+              rich_text: [{
+                text: {
+                  content: task.priorityReason,
+                },
+              }],
             },
           }),
         },
@@ -687,6 +755,46 @@ class NotionService {
       if (updates.tags) {
         properties['Tags'] = {
           multi_select: updates.tags.map(tag => ({ name: tag })),
+        };
+      }
+
+      if (updates.urgencyScore !== undefined) {
+        properties['Urgency Score'] = {
+          number: updates.urgencyScore,
+        };
+      }
+
+      if (updates.impactScore !== undefined) {
+        properties['Impact Score'] = {
+          number: updates.impactScore,
+        };
+      }
+
+      if (updates.effortScore !== undefined) {
+        properties['Effort Score'] = {
+          number: updates.effortScore,
+        };
+      }
+
+      if (updates.dependenciesScore !== undefined) {
+        properties['Dependencies Score'] = {
+          number: updates.dependenciesScore,
+        };
+      }
+
+      if (updates.totalRubricScore !== undefined) {
+        properties['Total Rubric Score'] = {
+          number: updates.totalRubricScore,
+        };
+      }
+
+      if (updates.priorityReason) {
+        properties['Priority Reason'] = {
+          rich_text: [{
+            text: {
+              content: updates.priorityReason,
+            },
+          }],
         };
       }
 

@@ -17,6 +17,7 @@
     "format:check": "prettier --check ."
   },
   "dependencies": {
+    "@company/rubric-sdk": "file:../rubric-sdk",
     "@hookform/resolvers": "^3.3.0",
     "@notionhq/client": "^4.0.2",
     "@octokit/rest": "^22.0.0",
