@@ -1,7 +1,7 @@
 'use client'
 
 import Link from 'next/link'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, Suspense } from 'react'
 import { useSearchParams } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
 import { 
@@ -19,7 +19,7 @@ import { HTML5Backend } from 'react-dnd-html5-backend'
 
 type BoardMode = 'inspiration' | 'shopping'
 
-export default function DesignBoardPage() {
+function DesignBoardContent() {
   const searchParams = useSearchParams()
   const [currentMode, setCurrentMode] = useState<BoardMode>('inspiration')
   const [isLoading, setIsLoading] = useState(false)
@@ -406,6 +406,25 @@ export default function DesignBoardPage() {
       )}
       </div>
     </DndProvider>
+  )
+}
+
+export default function DesignBoardPage() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+        <div className="text-center">
+          <motion.div
+            animate={{ rotate: 360 }}
+            transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
+            className="w-8 h-8 border-2 border-violet-600 border-t-transparent rounded-full mx-auto mb-4"
+          />
+          <p className="text-gray-600">Loading Design Board...</p>
+        </div>
+      </div>
+    }>
+      <DesignBoardContent />
+    </Suspense>
   )
 }
 
