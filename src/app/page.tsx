@@ -82,23 +82,27 @@ export default function Home() {
               transition={{ duration: 0.8, delay: 0.6 }}
               className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16"
             >
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="group bg-black text-white px-8 py-4 rounded-full font-semibold text-lg flex items-center gap-2 hover:bg-gray-800 transition-colors"
-              >
-                Get started
-                <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-              </motion.button>
+              <Link href="/products">
+                <motion.button
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="group bg-black text-white px-8 py-4 rounded-full font-semibold text-lg flex items-center gap-2 hover:bg-gray-800 transition-colors"
+                >
+                  Get started
+                  <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                </motion.button>
+              </Link>
               
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="group bg-white border-2 border-gray-200 text-gray-900 px-8 py-4 rounded-full font-semibold text-lg flex items-center gap-2 hover:border-gray-300 transition-colors"
-              >
-                <Play className="w-5 h-5" />
-                Watch demo
-              </motion.button>
+              <Link href="/moodboard">
+                <motion.button
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="group bg-white border-2 border-gray-200 text-gray-900 px-8 py-4 rounded-full font-semibold text-lg flex items-center gap-2 hover:border-gray-300 transition-colors"
+                >
+                  <Play className="w-5 h-5" />
+                  Try Moodboard
+                </motion.button>
+              </Link>
             </motion.div>
           </div>
         </div>
@@ -297,13 +301,15 @@ export default function Home() {
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="bg-white text-black px-8 py-4 rounded-full font-semibold text-lg hover:bg-gray-100 transition-colors"
-              >
-                Start creating today
-              </motion.button>
+              <Link href="/moodboard">
+                <motion.button
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="bg-white text-black px-8 py-4 rounded-full font-semibold text-lg hover:bg-gray-100 transition-colors"
+                >
+                  Start creating today
+                </motion.button>
+              </Link>
               
               <Link href="/dashboard">
                 <motion.button
