@@ -126,12 +126,12 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
                 {/* Notifications */}
                 <button className="relative p-2 text-gray-400 hover:text-gray-500">
                   <Bell className="h-6 w-6" />
-                  <span className="absolute top-1 right-1 h-2 w-2 bg-red-500 rounded-full"></span>
+                  <span className="absolute top-1 right-1 h-2 w-2 bg-rose-400 rounded-full"></span>
                 </button>
 
                 {/* Profile */}
                 <div className="flex items-center space-x-3">
-                  <div className="w-8 h-8 bg-gradient-to-br from-purple-500 to-pink-500 rounded-full flex items-center justify-center">
+                  <div className="w-8 h-8 bg-gradient-to-br from-violet-500 to-rose-500 rounded-full flex items-center justify-center">
                     <User className="h-4 w-4 text-white" />
                   </div>
                   <div className="hidden md:block text-right">
@@ -157,7 +157,7 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
       <div className="flex flex-col h-full">
         <div className="flex items-center justify-center h-16 bg-gray-800">
           <div className="flex items-center space-x-3">
-            <div className="w-8 h-8 bg-gradient-to-br from-purple-600 via-pink-600 to-blue-600 rounded-lg flex items-center justify-center">
+            <div className="w-8 h-8 bg-gradient-to-br from-violet-600 via-pink-600 to-sky-600 rounded-lg flex items-center justify-center">
               <span className="text-white font-bold text-sm">T</span>
             </div>
             <span className="text-white font-bold text-xl">Tessellate</span>
@@ -176,7 +176,7 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
                   className={cn(
                     'group flex items-center px-3 py-3 text-sm font-medium rounded-lg transition-all duration-200',
                     isActive
-                      ? 'bg-purple-600 text-white shadow-lg'
+                      ? 'bg-violet-500 text-white shadow-lg'
                       : 'text-gray-300 hover:bg-gray-800 hover:text-white'
                   )}
                 >
@@ -198,11 +198,11 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
 
         {/* Bottom section */}
         <div className="p-4 border-t border-gray-700">
-          <div className="bg-gradient-to-r from-purple-600 to-pink-600 rounded-lg p-4 text-white text-center">
+          <div className="bg-gradient-to-r from-violet-600 to-rose-600 rounded-lg p-4 text-white text-center">
             <TrendingUp className="h-8 w-8 mx-auto mb-2" />
             <h3 className="font-semibold text-sm">Upgrade to Pro</h3>
             <p className="text-xs opacity-90 mt-1">Get unlimited access to all features</p>
-            <button className="w-full bg-white text-purple-600 py-2 px-4 rounded-md text-sm font-medium mt-3 hover:bg-gray-100 transition-colors">
+            <button className="w-full bg-white text-violet-600 py-2 px-4 rounded-md text-sm font-medium mt-3 hover:bg-gray-100 transition-colors">
               Upgrade Now
             </button>
           </div>

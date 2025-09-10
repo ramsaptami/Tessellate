@@ -83,7 +83,7 @@ export default function NotionDashboard() {
             ) : metricsError ? (
               <Card>
                 <CardContent className="py-8">
-                  <div className="text-center text-red-600">
+                  <div className="text-center text-rose-600">
                     Error loading metrics: {metricsError.message}
                   </div>
                 </CardContent>
@@ -108,7 +108,7 @@ export default function NotionDashboard() {
                     <CardTitle className="text-sm font-medium">Completion Rate</CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <div className="text-2xl font-bold text-green-600">
+                    <div className="text-2xl font-bold text-emerald-600">
                       {metrics.totalProjects > 0 
                         ? Math.round((metrics.completedProjects / metrics.totalProjects) * 100)
                         : 0
@@ -153,13 +153,13 @@ export default function NotionDashboard() {
                     <div className="space-y-3">
                       <div className="flex justify-between items-center">
                         <span className="text-sm">Completed</span>
-                        <span className="text-sm font-medium text-green-600">
+                        <span className="text-sm font-medium text-emerald-600">
                           {metrics.completedTasks}
                         </span>
                       </div>
                       <div className="w-full bg-secondary rounded-full h-2">
                         <div 
-                          className="bg-green-600 h-2 rounded-full transition-all duration-300" 
+                          className="bg-emerald-500 h-2 rounded-full transition-all duration-300" 
                           style={{ 
                             width: `${metrics.totalTasks > 0 ? (metrics.completedTasks / metrics.totalTasks) * 100 : 0}%` 
                           }}
@@ -168,13 +168,13 @@ export default function NotionDashboard() {
                       
                       <div className="flex justify-between items-center">
                         <span className="text-sm">In Progress</span>
-                        <span className="text-sm font-medium text-blue-600">
+                        <span className="text-sm font-medium text-sky-600">
                           {metrics.inProgressTasks}
                         </span>
                       </div>
                       <div className="w-full bg-secondary rounded-full h-2">
                         <div 
-                          className="bg-blue-600 h-2 rounded-full transition-all duration-300" 
+                          className="bg-sky-500 h-2 rounded-full transition-all duration-300" 
                           style={{ 
                             width: `${metrics.totalTasks > 0 ? (metrics.inProgressTasks / metrics.totalTasks) * 100 : 0}%` 
                           }}
@@ -185,13 +185,13 @@ export default function NotionDashboard() {
                         <>
                           <div className="flex justify-between items-center">
                             <span className="text-sm">Overdue</span>
-                            <span className="text-sm font-medium text-red-600">
+                            <span className="text-sm font-medium text-rose-600">
                               {metrics.overdueTasks}
                             </span>
                           </div>
                           <div className="w-full bg-secondary rounded-full h-2">
                             <div 
-                              className="bg-red-600 h-2 rounded-full transition-all duration-300" 
+                              className="bg-rose-500 h-2 rounded-full transition-all duration-300" 
                               style={{ 
                                 width: `${metrics.totalTasks > 0 ? (metrics.overdueTasks / metrics.totalTasks) * 100 : 0}%` 
                               }}
@@ -212,13 +212,13 @@ export default function NotionDashboard() {
                     <div className="grid grid-cols-2 gap-4 text-sm">
                       <div>
                         <p className="text-muted-foreground">Active Projects</p>
-                        <p className="text-lg font-semibold text-blue-600">
+                        <p className="text-lg font-semibold text-sky-600">
                           {metrics.activeProjects}
                         </p>
                       </div>
                       <div>
                         <p className="text-muted-foreground">Completed</p>
-                        <p className="text-lg font-semibold text-green-600">
+                        <p className="text-lg font-semibold text-emerald-600">
                           {metrics.completedProjects}
                         </p>
                       </div>

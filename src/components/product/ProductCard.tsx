@@ -4,8 +4,9 @@ import Image from 'next/image'
 import { motion } from 'framer-motion'
 import { Badge } from '@/components/ui/badge'
 import { Card, CardContent } from '@/components/ui/card'
-import { Star, ShoppingCart, Heart } from 'lucide-react'
+import { Star, ShoppingCart, Heart, Move } from 'lucide-react'
 import { Product, Brand, Category } from '@/lib/supabase'
+import { useDrag } from 'react-dnd'
 
 interface ProductCardProps {
   product: Product & { brand: Brand; category: Category }
@@ -15,15 +16,32 @@ export default function ProductCard({ product }: ProductCardProps) {
   const mainImage = product.image_urls?.[0] || '/placeholder-product.jpg'
   const hasDiscount = product.sale_price && product.sale_price < product.price
   
+  const [{ isDragging }, drag] = useDrag(() => ({
+    type: 'product',
+    item: { 
+      id: product.id,
+      type: 'product',
+      image_urls: product.image_urls,
+      name: product.name,
+      brand: product.brand,
+      price: product.price
+    },
+    collect: (monitor) => ({
+      isDragging: monitor.isDragging(),
+    }),
+  }))
+  
   return (
     <motion.div
+      ref={drag}
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.3 }}
       whileHover={{ y: -4 }}
       className="group"
+      style={{ opacity: isDragging ? 0.5 : 1 }}
     >
-      <Card className="overflow-hidden border-0 shadow-sm hover:shadow-lg transition-all duration-300">
+      <Card className="overflow-hidden border-0 shadow-sm hover:shadow-lg transition-all duration-300 cursor-grab active:cursor-grabbing">
         <div className="relative aspect-square overflow-hidden">
           <Image
             src={mainImage}
@@ -33,14 +51,19 @@ export default function ProductCard({ product }: ProductCardProps) {
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           />
           
-          {/* Wishlist button */}
-          <button className="absolute top-3 right-3 p-2 rounded-full bg-white/80 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity hover:bg-white">
-            <Heart className="w-4 h-4" />
-          </button>
+          {/* Drag indicator and controls */}
+          <div className="absolute top-3 right-3 flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+            <button className="p-2 rounded-full bg-white/80 backdrop-blur-sm hover:bg-white">
+              <Move className="w-4 h-4 text-primary" title="Drag to moodboard" />
+            </button>
+            <button className="p-2 rounded-full bg-white/80 backdrop-blur-sm hover:bg-white">
+              <Heart className="w-4 h-4" />
+            </button>
+          </div>
           
           {/* Discount badge */}
           {hasDiscount && (
-            <Badge className="absolute top-3 left-3 bg-red-500 hover:bg-red-600">
+            <Badge className="absolute top-3 left-3 bg-rose-400 hover:bg-rose-500">
               -{Math.round(((product.price - product.sale_price!) / product.price) * 100)}%
             </Badge>
           )}
@@ -65,7 +88,7 @@ export default function ProductCard({ product }: ProductCardProps) {
             <span className="text-sm font-medium text-primary">
               {product.brand.name}
             </span>
-            <span className="text-xs text-muted-foreground">
+            <span className="text-xs text-gray-500">
               • {product.category.name}
             </span>
           </div>
@@ -89,7 +112,7 @@ export default function ProductCard({ product }: ProductCardProps) {
                 />
               ))}
             </div>
-            <span className="text-sm text-muted-foreground">
+            <span className="text-sm text-gray-500">
               {product.rating} ({product.review_count})
             </span>
           </div>
@@ -108,7 +131,7 @@ export default function ProductCard({ product }: ProductCardProps) {
           {/* Colors */}
           {product.colors && product.colors.length > 0 && (
             <div className="flex items-center gap-2 mb-3">
-              <span className="text-sm text-muted-foreground">Colors:</span>
+              <span className="text-sm text-gray-500">Colors:</span>
               <div className="flex gap-1">
                 {product.colors.slice(0, 4).map((color, index) => (
                   <div
@@ -128,7 +151,7 @@ export default function ProductCard({ product }: ProductCardProps) {
                   />
                 ))}
                 {product.colors.length > 4 && (
-                  <span className="text-xs text-muted-foreground">
+                  <span className="text-xs text-gray-500">
                     +{product.colors.length - 4}
                   </span>
                 )}
@@ -144,7 +167,7 @@ export default function ProductCard({ product }: ProductCardProps) {
                   <span className="text-lg font-bold text-primary">
                     ${product.sale_price!.toFixed(2)}
                   </span>
-                  <span className="text-sm text-muted-foreground line-through">
+                  <span className="text-sm text-gray-500 line-through">
                     ${product.price.toFixed(2)}
                   </span>
                 </>
@@ -156,9 +179,9 @@ export default function ProductCard({ product }: ProductCardProps) {
             </div>
             
             <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="flex items-center gap-2 bg-primary text-primary-foreground px-3 py-2 rounded-md text-sm font-medium hover:bg-primary/90 transition-colors disabled:opacity-50"
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+              className="flex items-center gap-2 bg-primary text-white px-3 py-2 text-sm font-medium hover:bg-[primary/90] transition-colors disabled:opacity-50"
               disabled={product.stock_quantity === 0}
             >
               <ShoppingCart className="w-4 h-4" />

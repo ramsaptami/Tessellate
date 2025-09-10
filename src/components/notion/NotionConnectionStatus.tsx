@@ -20,15 +20,15 @@ export default function NotionConnectionStatus() {
 
   const getStatusIcon = () => {
     if (isLoading || storeStatus.syncStatus === 'syncing') {
-      return <RefreshCw className="h-4 w-4 animate-spin text-blue-600" />;
+      return <RefreshCw className="h-4 w-4 animate-spin text-sky-600" />;
     }
 
     if (connectionStatus?.isConnected) {
-      return <CheckCircle className="h-4 w-4 text-green-600" />;
+      return <CheckCircle className="h-4 w-4 text-emerald-600" />;
     }
 
     if (storeStatus.syncStatus === 'error') {
-      return <XCircle className="h-4 w-4 text-red-600" />;
+      return <XCircle className="h-4 w-4 text-rose-600" />;
     }
 
     return <AlertCircle className="h-4 w-4 text-amber-600" />;
@@ -43,9 +43,9 @@ export default function NotionConnectionStatus() {
   };
 
   const getStatusColor = () => {
-    if (isLoading || storeStatus.syncStatus === 'syncing') return 'text-blue-600';
-    if (connectionStatus?.isConnected) return 'text-green-600';
-    if (storeStatus.syncStatus === 'error') return 'text-red-600';
+    if (isLoading || storeStatus.syncStatus === 'syncing') return 'text-sky-600';
+    if (connectionStatus?.isConnected) return 'text-emerald-600';
+    if (storeStatus.syncStatus === 'error') return 'text-rose-600';
     return 'text-amber-600';
   };
 
@@ -77,7 +77,7 @@ export default function NotionConnectionStatus() {
           )}
 
           {storeStatus.errorMessage && (
-            <p className="text-xs text-red-600">
+            <p className="text-xs text-rose-600">
               {storeStatus.errorMessage}
             </p>
           )}

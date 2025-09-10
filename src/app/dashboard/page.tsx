@@ -69,7 +69,7 @@ export default function DashboardPage() {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
-          <RefreshCw className="h-8 w-8 animate-spin mx-auto mb-4 text-blue-600" />
+          <RefreshCw className="h-8 w-8 animate-spin mx-auto mb-4 text-sky-600" />
           <p className="text-muted-foreground">Loading project dashboard...</p>
         </div>
       </div>
@@ -92,7 +92,7 @@ export default function DashboardPage() {
                 </div>
                 <button
                   onClick={refreshData}
-                  className="flex items-center gap-2 px-4 py-2 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-colors"
+                  className="flex items-center gap-2 px-4 py-2 bg-primary text-primary-foreground rounded-full hover:bg-primary/90 transition-colors"
                   disabled={isLoading}
                 >
                   <RefreshCw className={`h-4 w-4 ${isLoading ? 'animate-spin' : ''}`} />
@@ -172,22 +172,22 @@ export default function DashboardPage() {
               <div className="space-y-4">
                 <div className="flex items-center justify-between">
                   <span className="text-sm font-medium">Completed</span>
-                  <span className="text-sm font-bold text-green-600">{taskMetrics.completed}</span>
+                  <span className="text-sm font-bold text-emerald-600">{taskMetrics.completed}</span>
                 </div>
                 <div className="w-full bg-secondary rounded-full h-2">
                   <div 
-                    className="bg-green-600 h-2 rounded-full" 
+                    className="bg-emerald-500 h-2 rounded-full" 
                     style={{ width: `${(taskMetrics.completed / taskMetrics.total) * 100}%` }}
                   />
                 </div>
                 
                 <div className="flex items-center justify-between">
                   <span className="text-sm font-medium">In Progress</span>
-                  <span className="text-sm font-bold text-blue-600">{taskMetrics.inProgress}</span>
+                  <span className="text-sm font-bold text-sky-600">{taskMetrics.inProgress}</span>
                 </div>
                 <div className="w-full bg-secondary rounded-full h-2">
                   <div 
-                    className="bg-blue-600 h-2 rounded-full" 
+                    className="bg-sky-500 h-2 rounded-full" 
                     style={{ width: `${(taskMetrics.inProgress / taskMetrics.total) * 100}%` }}
                   />
                 </div>
@@ -219,13 +219,13 @@ export default function DashboardPage() {
                 <div className="grid grid-cols-2 gap-4 text-sm">
                   <div>
                     <p className="text-muted-foreground font-medium">Completion Rate</p>
-                    <p className="text-2xl font-bold text-green-600">
+                    <p className="text-2xl font-bold text-emerald-600">
                       {Math.round((taskMetrics.completed / taskMetrics.total) * 100)}%
                     </p>
                   </div>
                   <div>
                     <p className="text-muted-foreground font-medium">Velocity</p>
-                    <p className="text-2xl font-bold text-blue-600">8.2</p>
+                    <p className="text-2xl font-bold text-sky-600">8.2</p>
                   </div>
                   <div>
                     <p className="text-muted-foreground font-medium">Bug Rate</p>
@@ -233,7 +233,7 @@ export default function DashboardPage() {
                   </div>
                   <div>
                     <p className="text-muted-foreground font-medium">Uptime</p>
-                    <p className="text-2xl font-bold text-green-600">99.9%</p>
+                    <p className="text-2xl font-bold text-emerald-600">99.9%</p>
                   </div>
                 </div>
               </div>
@@ -253,14 +253,14 @@ export default function DashboardPage() {
           <CardContent>
             <div className="space-y-4">
               <div className="flex items-center gap-3 p-3 bg-muted rounded-lg">
-                <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                <div className="w-2 h-2 bg-emerald-400 rounded-full"></div>
                 <div className="flex-1">
                   <p className="text-sm font-medium">Authentication system deployed successfully</p>
                   <p className="text-xs text-muted-foreground">2 hours ago • Production</p>
                 </div>
               </div>
               <div className="flex items-center gap-3 p-3 bg-muted rounded-lg">
-                <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
+                <div className="w-2 h-2 bg-sky-400 rounded-full"></div>
                 <div className="flex-1">
                   <p className="text-sm font-medium">Code review completed for dashboard updates</p>
                   <p className="text-xs text-muted-foreground">4 hours ago • Development</p>

@@ -68,11 +68,11 @@ export default function NotionProjectsList() {
       case TaskPriority.LOW:
         return 'bg-gray-100 text-gray-600';
       case TaskPriority.MEDIUM:
-        return 'bg-blue-100 text-blue-600';
+        return 'bg-blue-100 text-sky-600';
       case TaskPriority.HIGH:
         return 'bg-orange-100 text-orange-600';
       case TaskPriority.URGENT:
-        return 'bg-red-100 text-red-600';
+        return 'bg-red-100 text-rose-600';
       default:
         return 'bg-gray-100 text-gray-600';
     }
@@ -100,7 +100,7 @@ export default function NotionProjectsList() {
           <CardTitle>Projects</CardTitle>
         </CardHeader>
         <CardContent>
-          <p className="text-red-600">
+          <p className="text-rose-600">
             Error loading projects: {error.message}
           </p>
         </CardContent>
@@ -153,7 +153,7 @@ export default function NotionProjectsList() {
                           href={project.url}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="text-blue-600 hover:text-blue-800"
+                          className="text-sky-600 hover:text-blue-800"
                         >
                           <ExternalLink className="h-3 w-3" />
                         </a>

@@ -32,7 +32,7 @@ export default class NotionErrorBoundary extends Component<Props, State> {
       return (
         <Card className="border-red-200">
           <CardHeader>
-            <CardTitle className="flex items-center gap-2 text-red-600">
+            <CardTitle className="flex items-center gap-2 text-rose-600">
               <AlertTriangle className="h-5 w-5" />
               Notion Integration Error
             </CardTitle>

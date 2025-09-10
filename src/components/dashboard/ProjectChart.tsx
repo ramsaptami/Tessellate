@@ -24,7 +24,7 @@ export default function ProjectChart() {
           <p className="text-sm text-gray-600">Monthly project statistics</p>
         </div>
         <div className="flex items-center space-x-3">
-          <div className="flex items-center text-sm text-green-600">
+          <div className="flex items-center text-sm text-emerald-600">
             <TrendingUp className="h-4 w-4 mr-1" />
             <span className="font-medium">+12%</span>
           </div>
@@ -37,11 +37,11 @@ export default function ProjectChart() {
       <div className="space-y-4">
         <div className="flex items-center space-x-6 text-sm">
           <div className="flex items-center">
-            <div className="w-3 h-3 bg-purple-500 rounded-full mr-2"></div>
+            <div className="w-3 h-3 bg-violet-400 rounded-full mr-2"></div>
             <span className="text-gray-600">Active Projects</span>
           </div>
           <div className="flex items-center">
-            <div className="w-3 h-3 bg-purple-300 rounded-full mr-2"></div>
+            <div className="w-3 h-3 bg-violet-200 rounded-full mr-2"></div>
             <span className="text-gray-600">Completed</span>
           </div>
         </div>
@@ -55,7 +55,7 @@ export default function ProjectChart() {
                     initial={{ height: 0 }}
                     animate={{ height: `${(data.projects / maxValue) * 100}%` }}
                     transition={{ duration: 1, delay: index * 0.1 }}
-                    className="bg-purple-500 rounded-t-sm min-h-[4px] flex items-end justify-center"
+                    className="bg-violet-400 rounded-t-sm min-h-[4px] flex items-end justify-center"
                   >
                     <span className="text-xs font-medium text-white pb-1">
                       {data.projects}
@@ -65,7 +65,7 @@ export default function ProjectChart() {
                     initial={{ height: 0 }}
                     animate={{ height: `${(data.completed / maxValue) * 80}%` }}
                     transition={{ duration: 1, delay: index * 0.1 + 0.2 }}
-                    className="bg-purple-300 rounded-t-sm min-h-[4px] flex items-end justify-center"
+                    className="bg-violet-200 rounded-t-sm min-h-[4px] flex items-end justify-center"
                   >
                     <span className="text-xs font-medium text-purple-800 pb-1">
                       {data.completed}
@@ -86,7 +86,7 @@ export default function ProjectChart() {
             <div className="text-xs text-gray-600">Total Projects</div>
           </div>
           <div>
-            <div className="text-2xl font-bold text-green-600">68</div>
+            <div className="text-2xl font-bold text-emerald-600">68</div>
             <div className="text-xs text-gray-600">Completed</div>
           </div>
           <div>

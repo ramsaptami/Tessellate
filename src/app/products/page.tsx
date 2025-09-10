@@ -6,7 +6,9 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import ProductGrid from '@/components/product/ProductGrid'
 import { db, Product, Brand, Category } from '@/lib/supabase'
-import { Loader2, Package, Store, Tag } from 'lucide-react'
+import { Loader2, Package, Store, Tag, Move } from 'lucide-react'
+import { DndProvider } from 'react-dnd'
+import { HTML5Backend } from 'react-dnd-html5-backend'
 
 type ProductWithRelations = Product & { brand: Brand; category: Category }
 
@@ -61,13 +63,13 @@ export default function ProductsPage() {
         <Card className="max-w-md">
           <CardContent className="text-center p-6">
             <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-red-100 flex items-center justify-center">
-              <Package className="w-8 h-8 text-red-600" />
+              <Package className="w-8 h-8 text-rose-600" />
             </div>
             <h3 className="text-lg font-semibold text-gray-900 mb-2">Connection Error</h3>
             <p className="text-muted-foreground mb-4">{error}</p>
             <button 
               onClick={() => window.location.reload()}
-              className="px-4 py-2 bg-primary text-primary-foreground rounded-md hover:bg-primary/90 transition-colors"
+              className="px-4 py-2 bg-primary text-primary-foreground rounded-full hover:bg-primary/90 transition-colors"
             >
               Try Again
             </button>
@@ -78,7 +80,8 @@ export default function ProductsPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <DndProvider backend={HTML5Backend}>
+      <div className="min-h-screen bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Header */}
         <motion.div 
@@ -89,9 +92,17 @@ export default function ProductsPage() {
           <h1 className="text-4xl font-bold text-gray-900 mb-4">
             Product Catalog
           </h1>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-4">
             Discover our curated collection of products from fictional brands across different categories
           </p>
+          <div className="max-w-2xl mx-auto p-4 bg-blue-50 border border-blue-200 rounded-lg">
+            <div className="flex items-center justify-center gap-3 text-primary">
+              <Move className="w-5 h-5" />
+              <span className="text-sm font-medium">
+                Drag any product to your moodboard with automatic background removal
+              </span>
+            </div>
+          </div>
         </motion.div>
 
         {/* Stats */}
@@ -206,6 +217,7 @@ export default function ProductsPage() {
           />
         </motion.div>
       </div>
-    </div>
+      </div>
+    </DndProvider>
   )
 }

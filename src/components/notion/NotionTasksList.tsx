@@ -66,11 +66,11 @@ export default function NotionTasksList() {
       case TaskPriority.LOW:
         return 'bg-gray-100 text-gray-600';
       case TaskPriority.MEDIUM:
-        return 'bg-blue-100 text-blue-600';
+        return 'bg-blue-100 text-sky-600';
       case TaskPriority.HIGH:
         return 'bg-orange-100 text-orange-600';
       case TaskPriority.URGENT:
-        return 'bg-red-100 text-red-600';
+        return 'bg-red-100 text-rose-600';
       default:
         return 'bg-gray-100 text-gray-600';
     }
@@ -105,7 +105,7 @@ export default function NotionTasksList() {
           <CardTitle>Tasks</CardTitle>
         </CardHeader>
         <CardContent>
-          <p className="text-red-600">
+          <p className="text-rose-600">
             Error loading tasks: {error.message}
           </p>
         </CardContent>
@@ -164,15 +164,15 @@ export default function NotionTasksList() {
               </div>
               <div className="bg-blue-50 p-3 rounded-lg">
                 <div className="text-lg font-bold text-blue-700">{tasks.filter(t => t.status === TaskStatus.IN_PROGRESS).length}</div>
-                <div className="text-xs text-blue-600">In Progress</div>
+                <div className="text-xs text-sky-600">In Progress</div>
               </div>
               <div className="bg-yellow-50 p-3 rounded-lg">
                 <div className="text-lg font-bold text-yellow-700">{tasks.filter(t => t.status === TaskStatus.REVIEW).length}</div>
-                <div className="text-xs text-yellow-600">Review</div>
+                <div className="text-xs text-amber-600">Review</div>
               </div>
               <div className="bg-green-50 p-3 rounded-lg">
                 <div className="text-lg font-bold text-green-700">{tasks.filter(t => t.status === TaskStatus.DONE).length}</div>
-                <div className="text-xs text-green-600">Done</div>
+                <div className="text-xs text-emerald-600">Done</div>
               </div>
             </div>
 
@@ -193,13 +193,13 @@ export default function NotionTasksList() {
                               href={task.url}
                               target="_blank"
                               rel="noopener noreferrer"
-                              className="text-blue-600 hover:text-blue-800"
+                              className="text-sky-600 hover:text-blue-800"
                             >
                               <ExternalLink className="h-3 w-3" />
                             </a>
                           )}
                           {isTaskOverdue(task) && (
-                            <span className="text-red-600 text-xs font-medium">OVERDUE</span>
+                            <span className="text-rose-600 text-xs font-medium">OVERDUE</span>
                           )}
                         </div>
                         {task.description && (
@@ -232,7 +232,7 @@ export default function NotionTasksList() {
                       {task.dueDate && (
                         <div className="flex items-center gap-1">
                           <Calendar className="h-3 w-3 text-muted-foreground" />
-                          <span className={`${isTaskOverdue(task) ? 'text-red-600' : 'text-muted-foreground'}`}>
+                          <span className={`${isTaskOverdue(task) ? 'text-rose-600' : 'text-muted-foreground'}`}>
                             {new Date(task.dueDate).toLocaleDateString()}
                           </span>
                         </div>

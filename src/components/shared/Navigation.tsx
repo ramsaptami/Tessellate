@@ -23,7 +23,7 @@ const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false)
 
   return (
-    <nav className="fixed top-0 w-full bg-white/90 backdrop-blur-md border-b border-gray-200/50 z-50">
+    <nav className="fixed top-0 w-full bg-white border-b border-gray-100 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
@@ -33,17 +33,17 @@ const Navigation = () => {
             transition={{ duration: 0.5 }}
           >
             <Link href="/" className="flex items-center space-x-3 group">
-              <div className="w-10 h-10 rounded-xl overflow-hidden shadow-lg group-hover:shadow-xl transition-shadow">
+              <div className="w-8 h-8 overflow-hidden transition-opacity group-hover:opacity-80">
                 <Image
                   src="https://ancuwmmivgdvommzigwv.supabase.co/storage/v1/object/sign/digital%20assets/cropped%20t.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9iNWFkYWFkOS01Y2YyLTRmNzQtYmU5Yi0wYTdjMjdhMDE2NzIiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJkaWdpdGFsIGFzc2V0cy9jcm9wcGVkIHQucG5nIiwiaWF0IjoxNzU3NDI3ODE3LCJleHAiOjE4MTc5MDc4MTd9.wwfGuA_YNafyw5ESP8s_fuPzW9NDkbijMZGpYaOHF3E"
                   alt="Tessellate Logo"
-                  width={40}
-                  height={40}
+                  width={32}
+                  height={32}
                   className="w-full h-full object-cover"
                 />
               </div>
-              <span className="font-bold text-2xl bg-gradient-to-r from-gray-900 to-gray-600 bg-clip-text text-transparent">
-                Tessellate
+              <span className="font-bold text-xl text-gray-900 group-hover:text-primary transition-colors">
+                tessellate
               </span>
             </Link>
           </motion.div>
@@ -53,10 +53,10 @@ const Navigation = () => {
             <Link 
               href="/" 
               className={cn(
-                "px-4 py-2 rounded-full text-sm font-medium transition-all duration-300",
+                "px-4 py-2 text-sm font-medium transition-colors",
                 pathname === '/' 
-                  ? "text-purple-600 bg-purple-50 shadow-sm" 
-                  : "text-gray-700 hover:text-purple-600 hover:bg-gray-50"
+                  ? "text-primary" 
+                  : "text-gray-700 hover:text-primary"
               )}
             >
               Home
@@ -66,44 +66,27 @@ const Navigation = () => {
               <Link 
                 href="/products" 
                 className={cn(
-                  "flex items-center space-x-2 px-4 py-2 rounded-full text-sm font-medium transition-all duration-300",
+                  "flex items-center space-x-2 px-4 py-2 text-sm font-medium transition-colors",
                   pathname === '/products' 
-                    ? "text-white bg-gradient-to-r from-green-500 to-emerald-500 shadow-lg" 
-                    : "text-gray-700 hover:text-green-600 hover:bg-gray-50"
+                    ? "text-primary" 
+                    : "text-gray-700 hover:text-primary"
                 )}
               >
                 <Package className="w-4 h-4" />
                 <span>Products</span>
               </Link>
 
-              <div className="w-8 h-px bg-gradient-to-r from-transparent via-gray-300 to-transparent"></div>
-
               <Link 
-                href="/moodboard" 
+                href="/design-board" 
                 className={cn(
-                  "flex items-center space-x-2 px-4 py-2 rounded-full text-sm font-medium transition-all duration-300",
-                  pathname === '/moodboard' 
-                    ? "text-white bg-gradient-to-r from-purple-500 to-pink-500 shadow-lg" 
-                    : "text-gray-700 hover:text-purple-600 hover:bg-gray-50"
+                  "flex items-center space-x-2 px-4 py-2 text-sm font-medium transition-colors",
+                  pathname === '/design-board' 
+                    ? "text-primary" 
+                    : "text-gray-700 hover:text-primary"
                 )}
               >
                 <Palette className="w-4 h-4" />
-                <span>Moodboard</span>
-              </Link>
-
-              <div className="w-8 h-px bg-gradient-to-r from-transparent via-gray-300 to-transparent"></div>
-
-              <Link 
-                href="/lookbook" 
-                className={cn(
-                  "flex items-center space-x-2 px-4 py-2 rounded-full text-sm font-medium transition-all duration-300",
-                  pathname === '/lookbook' 
-                    ? "text-white bg-gradient-to-r from-blue-500 to-indigo-500 shadow-lg" 
-                    : "text-gray-700 hover:text-blue-600 hover:bg-gray-50"
-                )}
-              >
-                <Sparkles className="w-4 h-4" />
-                <span>Lookbook</span>
+                <span>Design Board</span>
               </Link>
             </div>
 
@@ -112,15 +95,15 @@ const Navigation = () => {
             <Link 
               href="/dashboard" 
               className={cn(
-                "flex items-center space-x-2 px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 border border-gray-200",
+                "flex items-center space-x-2 px-4 py-2 text-sm font-medium transition-colors border border-gray-200 rounded-full",
                 pathname === '/dashboard' 
-                  ? "text-blue-600 bg-blue-50 border-blue-200 shadow-sm" 
-                  : "text-gray-700 hover:text-blue-600 hover:bg-gray-50 hover:border-gray-300"
+                  ? "text-primary border-primary" 
+                  : "text-gray-700 hover:text-primary hover:border-primary"
               )}
             >
               <BarChart3 className="w-4 h-4" />
               <span>Dashboard</span>
-              <Lock className="w-3 h-3 text-amber-500" />
+              <Lock className="w-3 h-3 text-gray-400" />
             </Link>
           </div>
 
@@ -129,7 +112,7 @@ const Navigation = () => {
             <motion.button
               whileTap={{ scale: 0.95 }}
               onClick={() => setIsOpen(!isOpen)}
-              className="p-2 rounded-lg text-gray-700 hover:bg-gray-100 transition-colors"
+              className="p-2 rounded-full text-gray-700 hover:bg-gray-100 transition-colors"
             >
               {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </motion.button>
@@ -151,10 +134,10 @@ const Navigation = () => {
               href="/" 
               onClick={() => setIsOpen(false)}
               className={cn(
-                "block px-4 py-3 rounded-xl text-sm font-medium transition-all",
+                "block px-4 py-3 text-sm font-medium transition-colors",
                 pathname === '/' 
-                  ? "text-purple-600 bg-purple-50" 
-                  : "text-gray-700 hover:bg-gray-50"
+                  ? "text-primary" 
+                  : "text-gray-700 hover:text-primary"
               )}
             >
               Home
@@ -164,10 +147,10 @@ const Navigation = () => {
               href="/products" 
               onClick={() => setIsOpen(false)}
               className={cn(
-                "flex items-center space-x-2 px-4 py-3 rounded-xl text-sm font-medium transition-all",
+                "flex items-center space-x-2 px-4 py-3 text-sm font-medium transition-colors",
                 pathname === '/products' 
-                  ? "text-green-600 bg-green-50" 
-                  : "text-gray-700 hover:bg-gray-50"
+                  ? "text-primary" 
+                  : "text-gray-700 hover:text-primary"
               )}
             >
               <Package className="w-4 h-4" />
@@ -175,46 +158,32 @@ const Navigation = () => {
             </Link>
             
             <Link 
-              href="/moodboard" 
+              href="/design-board" 
               onClick={() => setIsOpen(false)}
               className={cn(
-                "flex items-center space-x-2 px-4 py-3 rounded-xl text-sm font-medium transition-all",
-                pathname === '/moodboard' 
-                  ? "text-purple-600 bg-purple-50" 
-                  : "text-gray-700 hover:bg-gray-50"
+                "flex items-center space-x-2 px-4 py-3 text-sm font-medium transition-colors",
+                pathname === '/design-board' 
+                  ? "text-primary" 
+                  : "text-gray-700 hover:text-primary"
               )}
             >
               <Palette className="w-4 h-4" />
-              <span>Moodboard Studio</span>
-            </Link>
-            
-            <Link 
-              href="/lookbook" 
-              onClick={() => setIsOpen(false)}
-              className={cn(
-                "flex items-center space-x-2 px-4 py-3 rounded-xl text-sm font-medium transition-all",
-                pathname === '/lookbook' 
-                  ? "text-blue-600 bg-blue-50" 
-                  : "text-gray-700 hover:bg-gray-50"
-              )}
-            >
-              <Sparkles className="w-4 h-4" />
-              <span>Lookbook Creator</span>
+              <span>Design Board</span>
             </Link>
             
             <Link 
               href="/dashboard" 
               onClick={() => setIsOpen(false)}
               className={cn(
-                "flex items-center space-x-2 px-4 py-3 rounded-xl text-sm font-medium transition-all border-t border-gray-100 mt-2 pt-4",
+                "flex items-center space-x-2 px-4 py-3 text-sm font-medium transition-colors border-t border-gray-100 mt-2 pt-4",
                 pathname === '/dashboard' 
-                  ? "text-blue-600 bg-blue-50" 
-                  : "text-gray-700 hover:bg-gray-50"
+                  ? "text-primary" 
+                  : "text-gray-700 hover:text-primary"
               )}
             >
               <BarChart3 className="w-4 h-4" />
-              <span>Project Dashboard</span>
-              <Lock className="w-3 h-3 text-amber-500" />
+              <span>Dashboard</span>
+              <Lock className="w-3 h-3 text-gray-400" />
             </Link>
           </div>
         </motion.div>

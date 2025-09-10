@@ -20,9 +20,9 @@ const metrics = [
     change: '+2.5%',
     changeType: 'increase' as const,
     icon: FolderOpen,
-    color: 'from-blue-500 to-blue-600',
-    bgColor: 'bg-blue-50',
-    textColor: 'text-blue-600'
+    color: 'from-sky-300 to-sky-400',
+    bgColor: 'bg-sky-50',
+    textColor: 'text-sky-600'
   },
   {
     title: 'Tasks Completed',
@@ -30,9 +30,9 @@ const metrics = [
     change: '+12%',
     changeType: 'increase' as const,
     icon: CheckSquare,
-    color: 'from-green-500 to-green-600',
-    bgColor: 'bg-green-50',
-    textColor: 'text-green-600'
+    color: 'from-emerald-300 to-emerald-400',
+    bgColor: 'bg-emerald-50',
+    textColor: 'text-emerald-600'
   },
   {
     title: 'Deadlines Today',
@@ -40,9 +40,9 @@ const metrics = [
     change: '-25%',
     changeType: 'decrease' as const,
     icon: Clock,
-    color: 'from-orange-500 to-orange-600',
-    bgColor: 'bg-orange-50',
-    textColor: 'text-orange-600'
+    color: 'from-amber-300 to-amber-400',
+    bgColor: 'bg-amber-50',
+    textColor: 'text-amber-600'
   },
   {
     title: 'Team Productivity',
@@ -50,9 +50,9 @@ const metrics = [
     change: '+5%',
     changeType: 'increase' as const,
     icon: TrendingUp,
-    color: 'from-purple-500 to-purple-600',
-    bgColor: 'bg-purple-50',
-    textColor: 'text-purple-600'
+    color: 'from-violet-300 to-violet-400',
+    bgColor: 'bg-violet-50',
+    textColor: 'text-violet-600'
   }
 ]
 
@@ -76,11 +76,11 @@ export default function MetricsCards() {
               </div>
               <div className="flex items-center space-x-1 text-sm">
                 {metric.changeType === 'increase' ? (
-                  <ArrowUpRight className="h-4 w-4 text-green-500" />
+                  <ArrowUpRight className="h-4 w-4 text-emerald-500" />
                 ) : (
-                  <ArrowDownRight className="h-4 w-4 text-red-500" />
+                  <ArrowDownRight className="h-4 w-4 text-rose-500" />
                 )}
-                <span className={metric.changeType === 'increase' ? 'text-green-600' : 'text-red-600'}>
+                <span className={metric.changeType === 'increase' ? 'text-emerald-600' : 'text-rose-600'}>
                   {metric.change}
                 </span>
               </div>

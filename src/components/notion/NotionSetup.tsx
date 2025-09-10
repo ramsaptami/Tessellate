@@ -83,7 +83,7 @@ export default function NotionSetup() {
             href="https://developers.notion.com/docs/create-a-notion-integration"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-1 mt-2 text-sm text-blue-600 hover:text-blue-800"
+            className="inline-flex items-center gap-1 mt-2 text-sm text-sky-600 hover:text-blue-800"
           >
             Learn more about Notion integrations
             <ExternalLink className="h-3 w-3" />
@@ -118,7 +118,7 @@ export default function NotionSetup() {
             </div>
             {config.projectsDatabaseId ? (
               <div className="space-y-2">
-                <p className="text-sm text-green-600">✓ Database created</p>
+                <p className="text-sm text-emerald-600">✓ Database created</p>
                 <p className="text-xs text-muted-foreground font-mono break-all">
                   {config.projectsDatabaseId}
                 </p>
@@ -146,7 +146,7 @@ export default function NotionSetup() {
             </div>
             {config.tasksDatabaseId ? (
               <div className="space-y-2">
-                <p className="text-sm text-green-600">✓ Database created</p>
+                <p className="text-sm text-emerald-600">✓ Database created</p>
                 <p className="text-xs text-muted-foreground font-mono break-all">
                   {config.tasksDatabaseId}
                 </p>

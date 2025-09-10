@@ -1,6 +1,5 @@
 'use client'
 
-import DashboardLayout from '@/components/layout/DashboardLayout'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
 import { Sparkles, Search, Palette, Share2 } from 'lucide-react'
@@ -25,8 +24,7 @@ export default function LookbookPage() {
   }
 
   return (
-    <DashboardLayout>
-      <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gray-50">
       {/* Hero Section */}
       <section className="relative overflow-hidden bg-gradient-to-br from-rose-50 via-white to-indigo-50">
         <div className="mx-auto max-w-7xl px-6 pb-24 pt-16 sm:pb-32 sm:pt-24 lg:px-8 lg:pt-32">
@@ -50,9 +48,9 @@ export default function LookbookPage() {
               transition={{ duration: 0.8, delay: 0.2 }}
               className="mt-6 text-lg leading-8 text-gray-600"
             >
-              The modern Polyvore alternative. Discover products through natural language, 
-              create magazine-style lookbooks, and share your style with the world. 
-              From "pastel shirts with light bottoms" to professional editorial layouts.
+              Discover products through natural language, create magazine-style lookbooks, 
+              and share your style with the world. From "pastel shirts with light bottoms" 
+              to professional editorial layouts.
             </motion.p>
 
             {/* Workflow Integration Notice */}
@@ -64,8 +62,8 @@ export default function LookbookPage() {
             >
               <p className="text-sm text-center text-gray-700">
                 <span className="font-medium">Tip:</span> Start with a{' '}
-                <Link href="/moodboard" className="text-purple-600 hover:text-purple-700 font-medium underline">
-                  moodboard
+                <Link href="/design-board" className="text-violet-600 hover:text-purple-700 font-medium underline">
+                  design board
                 </Link>{' '}
                 to capture your inspiration, then use it to guide your lookbook creation
               </p>
@@ -77,12 +75,16 @@ export default function LookbookPage() {
               transition={{ duration: 0.8, delay: 0.4 }}
               className="mt-10 flex items-center justify-center gap-x-6"
             >
-              <button className="rounded-md bg-gradient-to-r from-rose-600 to-indigo-600 px-6 py-3 text-sm font-semibold text-white shadow-sm hover:from-rose-500 hover:to-indigo-500">
-                Start Creating
-              </button>
-              <button className="text-sm font-semibold leading-6 text-gray-900 hover:text-gray-700">
-                View Gallery <span aria-hidden="true">→</span>
-              </button>
+              <Link href="/design-board">
+                <button className="rounded-md bg-gradient-to-r from-rose-600 to-indigo-600 px-6 py-3 text-sm font-semibold text-white shadow-sm hover:from-rose-500 hover:to-indigo-500 transition-all duration-300">
+                  Start Creating
+                </button>
+              </Link>
+              <Link href="/design-board">
+                <button className="text-sm font-semibold leading-6 text-gray-900 hover:text-gray-700 transition-colors duration-300">
+                  View Gallery <span aria-hidden="true">→</span>
+                </button>
+              </Link>
             </motion.div>
           </div>
 
@@ -124,8 +126,8 @@ export default function LookbookPage() {
               </div>
 
               <div className="text-center">
-                <div className="mx-auto h-12 w-12 rounded-lg bg-purple-100 p-3">
-                  <Share2 className="h-6 w-6 text-purple-600" />
+                <div className="mx-auto h-12 w-12 rounded-lg bg-violet-100 p-3">
+                  <Share2 className="h-6 w-6 text-violet-600" />
                 </div>
                 <h3 className="mt-4 font-semibold text-gray-900">Click & Shop</h3>
                 <p className="mt-2 text-sm text-gray-600">
@@ -211,7 +213,7 @@ export default function LookbookPage() {
 
               {/* Product 2 */}
               <div className="group cursor-pointer">
-                <div className="aspect-[3/4] overflow-hidden rounded-lg bg-gradient-to-br from-blue-200 to-blue-300 mb-3">
+                <div className="aspect-[3/4] overflow-hidden rounded-lg bg-gradient-to-br from-sky-200 to-sky-300 mb-3">
                   <div className="h-full w-full flex items-center justify-center">
                     <span className="text-white font-medium">Light Bottoms</span>
                   </div>
@@ -229,7 +231,7 @@ export default function LookbookPage() {
 
               {/* Product 3 */}
               <div className="group cursor-pointer">
-                <div className="aspect-[3/4] overflow-hidden rounded-lg bg-gradient-to-br from-yellow-200 to-yellow-300 mb-3">
+                <div className="aspect-[3/4] overflow-hidden rounded-lg bg-gradient-to-br from-amber-200 to-amber-300 mb-3">
                   <div className="h-full w-full flex items-center justify-center">
                     <span className="text-white font-medium">Gold Necklace</span>
                   </div>
@@ -247,7 +249,7 @@ export default function LookbookPage() {
 
               {/* Product 4 */}
               <div className="group cursor-pointer">
-                <div className="aspect-[3/4] overflow-hidden rounded-lg bg-gradient-to-br from-green-200 to-green-300 mb-3">
+                <div className="aspect-[3/4] overflow-hidden rounded-lg bg-gradient-to-br from-emerald-200 to-emerald-300 mb-3">
                   <div className="h-full w-full flex items-center justify-center">
                     <span className="text-white font-medium">Canvas Bag</span>
                   </div>
@@ -285,7 +287,6 @@ export default function LookbookPage() {
           </div>
         </div>
       </section>
-      </div>
-    </DashboardLayout>
+    </div>
   )
 }

@@ -42,7 +42,7 @@ export default function AccessControl({ children }: AccessControlProps) {
         <Card className="border-blue-200">
           <CardHeader className="text-center">
             <div className="mx-auto h-16 w-16 rounded-full bg-blue-100 p-4 mb-4">
-              <Lock className="h-8 w-8 text-blue-600" />
+              <Lock className="h-8 w-8 text-sky-600" />
             </div>
             <CardTitle className="text-2xl">Access Control</CardTitle>
             <CardDescription>
@@ -89,7 +89,7 @@ export default function AccessControl({ children }: AccessControlProps) {
 
               {error && (
                 <div className="flex items-center gap-2 p-3 bg-red-50 border border-red-200 rounded-lg">
-                  <AlertCircle className="h-4 w-4 text-red-600" />
+                  <AlertCircle className="h-4 w-4 text-rose-600" />
                   <span className="text-sm text-red-700">{error}</span>
                 </div>
               )}
@@ -97,7 +97,7 @@ export default function AccessControl({ children }: AccessControlProps) {
               <button
                 type="submit"
                 disabled={isLoading}
-                className="w-full bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                className="w-full bg-sky-500 text-white py-2 px-4 rounded-lg hover:bg-sky-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
               >
                 {isLoading ? 'Verifying...' : 'Request Access'}
               </button>

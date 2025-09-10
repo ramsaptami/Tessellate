@@ -19,7 +19,7 @@ const activities = [
     description: 'Completed wireframe review with design team',
     time: '2 minutes ago',
     icon: CheckSquare,
-    color: 'text-green-600',
+    color: 'text-emerald-600',
     bgColor: 'bg-green-50'
   },
   {
@@ -29,7 +29,7 @@ const activities = [
     description: 'New logo variations added to brand guidelines',
     time: '15 minutes ago',
     icon: FileText,
-    color: 'text-blue-600',
+    color: 'text-sky-600',
     bgColor: 'bg-blue-50'
   },
   {
@@ -39,8 +39,8 @@ const activities = [
     description: 'Alex Johnson joined the creative team',
     time: '1 hour ago',
     icon: Users,
-    color: 'text-purple-600',
-    bgColor: 'bg-purple-50'
+    color: 'text-violet-600',
+    bgColor: 'bg-violet-50'
   },
   {
     id: 4,
@@ -59,7 +59,7 @@ const activities = [
     description: 'Project presentation due tomorrow',
     time: '3 hours ago',
     icon: Clock,
-    color: 'text-red-600',
+    color: 'text-rose-600',
     bgColor: 'bg-red-50'
   }
 ]
@@ -112,7 +112,7 @@ export default function RecentActivity() {
       </div>
       
       <div className="px-6 py-3 bg-gray-50 border-t border-gray-100">
-        <button className="text-sm font-medium text-purple-600 hover:text-purple-500 transition-colors">
+        <button className="text-sm font-medium text-violet-600 hover:text-violet-500 transition-colors">
           View all activity
         </button>
       </div>
