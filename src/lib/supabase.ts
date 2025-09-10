@@ -1,12 +1,9 @@
 import { createClient } from '@supabase/supabase-js'
 
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || ''
-const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || ''
+const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!
+const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
 
-// Create a dummy client if env vars are missing (for build time)
-export const supabase = supabaseUrl && supabaseAnonKey 
-  ? createClient(supabaseUrl, supabaseAnonKey)
-  : createClient('https://dummy.supabase.co', 'dummy-key')
+export const supabase = createClient(supabaseUrl, supabaseAnonKey)
 
 // Type definitions for our database
 export interface Category {
@@ -58,44 +55,24 @@ export interface Product {
 export const db = {
   // Categories
   getCategories: async () => {
-    if (!supabaseUrl || !supabaseAnonKey || supabaseUrl.includes('dummy')) {
-      console.warn('Supabase not configured, returning empty categories array')
-      return []
-    }
+    const { data, error } = await supabase
+      .from('categories')
+      .select('*')
+      .order('name')
     
-    try {
-      const { data, error } = await supabase
-        .from('categories')
-        .select('*')
-        .order('name')
-      
-      if (error) throw error
-      return data as Category[]
-    } catch (error) {
-      console.error('Error fetching categories:', error)
-      return []
-    }
+    if (error) throw error
+    return data as Category[]
   },
 
   // Brands
   getBrands: async () => {
-    if (!supabaseUrl || !supabaseAnonKey || supabaseUrl.includes('dummy')) {
-      console.warn('Supabase not configured, returning empty brands array')
-      return []
-    }
+    const { data, error } = await supabase
+      .from('brands')
+      .select('*, category:categories(*)')
+      .order('name')
     
-    try {
-      const { data, error } = await supabase
-        .from('brands')
-        .select('*, category:categories(*)')
-        .order('name')
-      
-      if (error) throw error
-      return data as (Brand & { category: Category })[]
-    } catch (error) {
-      console.error('Error fetching brands:', error)
-      return []
-    }
+    if (error) throw error
+    return data as (Brand & { category: Category })[]
   },
 
   getBrandsByCategory: async (categorySlug: string) => {
@@ -111,28 +88,18 @@ export const db = {
 
   // Products
   getProducts: async () => {
-    if (!supabaseUrl || !supabaseAnonKey || supabaseUrl.includes('dummy')) {
-      console.warn('Supabase not configured, returning empty products array')
-      return []
-    }
+    const { data, error } = await supabase
+      .from('products')
+      .select(`
+        *,
+        brand:brands(*),
+        category:categories(*)
+      `)
+      .eq('availability', true)
+      .order('created_at', { ascending: false })
     
-    try {
-      const { data, error } = await supabase
-        .from('products')
-        .select(`
-          *,
-          brand:brands(*),
-          category:categories(*)
-        `)
-        .eq('availability', true)
-        .order('created_at', { ascending: false })
-      
-      if (error) throw error
-      return data as (Product & { brand: Brand; category: Category })[]
-    } catch (error) {
-      console.error('Error fetching products:', error)
-      return []
-    }
+    if (error) throw error
+    return data as (Product & { brand: Brand; category: Category })[]
   },
 
   getProductsByCategory: async (categorySlug: string) => {
