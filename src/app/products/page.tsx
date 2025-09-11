@@ -5,7 +5,7 @@ import { motion } from 'framer-motion'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import ProductGrid from '@/components/product/ProductGrid'
-import { db, Product, Brand, Category } from '@/lib/supabase'
+import { Product, Brand, Category } from '@/lib/supabase'
 import { Loader2, Package, Store, Tag, Move } from 'lucide-react'
 import { DndProvider } from 'react-dnd'
 import { HTML5Backend } from 'react-dnd-html5-backend'
@@ -25,16 +25,26 @@ export default function ProductsPage() {
         setLoading(true)
         setError(null)
 
-        // Load all data in parallel
-        const [productsData, categoriesData, brandsData] = await Promise.all([
-          db.getProducts(),
-          db.getCategories(),
-          db.getBrands()
+        // Load all data in parallel from secure API endpoints
+        const [productsRes, categoriesRes, brandsRes] = await Promise.all([
+          fetch('/api/products'),
+          fetch('/api/categories'),
+          fetch('/api/brands')
         ])
 
-        setProducts(productsData)
-        setCategories(categoriesData)
-        setBrands(brandsData)
+        if (!productsRes.ok || !categoriesRes.ok || !brandsRes.ok) {
+          throw new Error('Failed to fetch data from API')
+        }
+
+        const [productsData, categoriesData, brandsData] = await Promise.all([
+          productsRes.json(),
+          categoriesRes.json(),
+          brandsRes.json()
+        ])
+
+        setProducts(productsData.products || [])
+        setCategories(categoriesData.categories || [])
+        setBrands(brandsData.brands || [])
       } catch (err) {
         console.error('Failed to load data:', err)
         setError(err instanceof Error ? err.message : 'Failed to load data')
