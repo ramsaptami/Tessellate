@@ -31,6 +31,7 @@ const DraggableItem = ({ item, onMove, onDelete, onRemoveBackground }: {
   onDelete: (id: string) => void
   onRemoveBackground: (id: string) => void
 }) => {
+  const dragRef = useRef<HTMLDivElement>(null)
   const [{ isDragging }, drag] = useDrag(() => ({
     type: 'moodboard-item',
     item: { id: item.id, type: 'moodboard-item' } as DragItem,
@@ -45,9 +46,13 @@ const DraggableItem = ({ item, onMove, onDelete, onRemoveBackground }: {
     }),
   }))
 
+  useEffect(() => {
+    drag(dragRef)
+  }, [drag])
+
   return (
     <motion.div
-      ref={drag}
+      ref={dragRef}
       className="absolute group cursor-move"
       style={{
         left: item.x,

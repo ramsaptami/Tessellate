@@ -142,7 +142,7 @@ class NotionWorkspaceSetupService {
 
       // Generate setup report
       result.setupReport = await this.generateSetupReport(result, options);
-      result.success = result.errors.length === 0 || options.dryRun;
+      result.success = result.errors.length === 0 || Boolean(options.dryRun);
 
       return result;
     } catch (error) {

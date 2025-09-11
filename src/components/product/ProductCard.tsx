@@ -7,12 +7,14 @@ import { Card, CardContent } from '@/components/ui/card'
 import { Star, ShoppingCart, Heart, Move } from 'lucide-react'
 import { Product, Brand, Category } from '@/lib/supabase'
 import { useDrag } from 'react-dnd'
+import { useRef, useEffect } from 'react'
 
 interface ProductCardProps {
   product: Product & { brand: Brand; category: Category }
 }
 
 export default function ProductCard({ product }: ProductCardProps) {
+  const dragRef = useRef<HTMLDivElement>(null)
   const mainImage = product.image_urls?.[0] || '/placeholder-product.jpg'
   const hasDiscount = product.sale_price && product.sale_price < product.price
   
@@ -31,9 +33,13 @@ export default function ProductCard({ product }: ProductCardProps) {
     }),
   }))
   
+  useEffect(() => {
+    drag(dragRef)
+  }, [drag])
+  
   return (
     <motion.div
-      ref={drag}
+      ref={dragRef}
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.3 }}
@@ -53,8 +59,8 @@ export default function ProductCard({ product }: ProductCardProps) {
           
           {/* Drag indicator and controls */}
           <div className="absolute top-3 right-3 flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
-            <button className="p-2 rounded-full bg-white/80 backdrop-blur-sm hover:bg-white">
-              <Move className="w-4 h-4 text-primary" title="Drag to moodboard" />
+            <button className="p-2 rounded-full bg-white/80 backdrop-blur-sm hover:bg-white" title="Drag to moodboard">
+              <Move className="w-4 h-4 text-primary" />
             </button>
             <button className="p-2 rounded-full bg-white/80 backdrop-blur-sm hover:bg-white">
               <Heart className="w-4 h-4" />

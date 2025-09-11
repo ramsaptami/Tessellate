@@ -3,15 +3,15 @@ import notionService from '@/lib/services/notion';
 import rubricService from '@/lib/services/rubric';
 
 interface RouteParams {
-  params: {
+  params: Promise<{
     id: string;
-  };
+  }>;
 }
 
 // PUT /api/notion/tasks/[id] - Update a task
 export async function PUT(request: NextRequest, { params }: RouteParams) {
   try {
-    const { id } = params;
+    const { id } = await params;
     const body = await request.json();
     const { updates, recalculateScore = false } = body;
 

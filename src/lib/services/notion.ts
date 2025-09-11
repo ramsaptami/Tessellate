@@ -85,14 +85,11 @@ class NotionService {
           page_id: parentPageId,
         },
         title: [{
-          type: 'title',
-          title: {
-            type: 'text',
-            text: {
-              content: 'Tessellate Projects',
-            },
+          type: 'text',
+          text: {
+            content: 'Tessellate Projects',
           },
-        }],
+        }] as any,
         properties: {
           'Name': {
             title: {},
@@ -145,7 +142,7 @@ class NotionService {
         },
       };
 
-      const response = await this.client.databases.create(databaseOptions);
+      const response = await this.client.databases.create(databaseOptions as any);
       return {
         success: true,
         data: response.id,
@@ -172,14 +169,11 @@ class NotionService {
           page_id: parentPageId,
         },
         title: [{
-          type: 'title',
-          title: {
-            type: 'text',
-            text: {
-              content: 'Tessellate Tasks',
-            },
+          type: 'text',
+          text: {
+            content: 'Tessellate Tasks',
           },
-        }],
+        }] as any,
         properties: {
           'Title': {
             title: {},
@@ -263,7 +257,7 @@ class NotionService {
         },
       };
 
-      const response = await this.client.databases.create(databaseOptions);
+      const response = await this.client.databases.create(databaseOptions as any);
       return {
         success: true,
         data: response.id,
@@ -447,7 +441,7 @@ class NotionService {
         },
       };
 
-      const response = await this.client.pages.create(pageOptions);
+      const response = await this.client.pages.create(pageOptions as any);
       return {
         success: true,
         data: response.id,
@@ -568,7 +562,7 @@ class NotionService {
         },
       };
 
-      const response = await this.client.pages.create(pageOptions);
+      const response = await this.client.pages.create(pageOptions as any);
       return {
         success: true,
         data: response.id,

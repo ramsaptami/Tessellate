@@ -1,3 +1,4 @@
+// @ts-ignore - No type declarations available
 import { RubricEngine, ConfigManager } from '@company/rubric-sdk';
 import { Task, TaskPriority, TaskStatus } from '@/lib/types/notion';
 

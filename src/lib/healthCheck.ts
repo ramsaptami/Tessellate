@@ -85,8 +85,7 @@ export class HealthChecker {
     for (const page of pages) {
       try {
         const response = await fetch(`${this.baseUrl}${page.path}`, {
-          method: 'GET',
-          timeout: this.timeout
+          method: 'GET'
         })
         
         if (response.ok) {

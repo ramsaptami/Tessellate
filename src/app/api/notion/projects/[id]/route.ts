@@ -2,15 +2,15 @@ import { NextRequest, NextResponse } from 'next/server';
 import notionService from '@/lib/services/notion';
 
 interface RouteParams {
-  params: {
+  params: Promise<{
     id: string;
-  };
+  }>;
 }
 
 // PUT /api/notion/projects/[id] - Update a project
 export async function PUT(request: NextRequest, { params }: RouteParams) {
   try {
-    const { id } = params;
+    const { id } = await params;
     const body = await request.json();
     const { updates } = body;
 
