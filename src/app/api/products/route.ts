@@ -10,7 +10,6 @@ export async function GET() {
         brand:brands(*),
         category:categories(*)
       `)
-      .eq('availability', true)
       .order('created_at', { ascending: false })
 
     if (error) {
