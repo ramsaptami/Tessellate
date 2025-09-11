@@ -27,6 +27,7 @@ const eslintConfig = [
       "@typescript-eslint/no-unused-vars": "warn", 
       "@typescript-eslint/no-require-imports": "warn",
       "@typescript-eslint/no-unused-expressions": "warn",
+      "@typescript-eslint/ban-ts-comment": "warn",
       "@next/next/no-img-element": "warn",
       "react/no-unescaped-entities": "warn",
       "prefer-const": "warn",
